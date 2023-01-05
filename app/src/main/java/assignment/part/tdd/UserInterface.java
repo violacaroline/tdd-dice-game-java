@@ -10,4 +10,11 @@ public class UserInterface {
   void printWelcome() {
     System.out.println("Welcome!");
   }
+
+  /**
+   * Prints You Won message.
+   */
+  void printWinningMessage() {
+    System.out.println("You Won!");
+  }
 }
