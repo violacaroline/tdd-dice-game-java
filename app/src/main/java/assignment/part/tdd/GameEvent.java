@@ -2,7 +2,8 @@ package assignment.part.tdd;
 
 public enum GameEvent {
   PLAY,
-  QUIT;
+  QUIT,
+  NOTHING;
 
   public static GameEvent findEnumValue(String enumValueName) {
     GameEvent value = null;
