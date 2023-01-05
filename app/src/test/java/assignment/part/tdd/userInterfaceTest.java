@@ -2,10 +2,9 @@ package assignment.part.tdd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
-
+import java.util.Scanner;
 import org.junit.jupiter.api.*;
+// import org.mockito.Mockito;
 
 
 public class UserInterfaceTest {
@@ -47,9 +46,14 @@ public class UserInterfaceTest {
 
   @Test 
   void uiPrintMenuShouldReturnGameEventPlayForLetterP() {
-    Robot robot = new Robot();
-    
-    this.userInterface.printMenu();
-    robot.keyPress(KeyEvent.VK_P);
+    try {
+      String correctInput = "p";
+      ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
+
+      assertEquals(GameEvent.PLAY, this.userInterface.printMenu(new Scanner(inputStream)));
+
+    } catch (IOError error) {
+      error.printStackTrace();
+    }
   }
 }

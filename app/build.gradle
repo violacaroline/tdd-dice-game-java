@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -17,6 +18,9 @@ repositories {
 }
 
 dependencies {
+    // Use Mockito.
+    implementation 'org.mockito:mockito-core:3.+'
+
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
 
@@ -33,3 +37,17 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+jacoco {
+    toolVersion = "0.8.8"
+    reportsDir = file("$buildDir/jacoco")
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+

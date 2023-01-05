@@ -1,5 +1,7 @@
 package assignment.part.tdd;
 
+import java.util.Scanner;
+
 /**
  * Represents the user interface.
  */
@@ -9,6 +11,20 @@ public class UserInterface {
    */
   void printWelcome() {
     System.out.println("Welcome!");
+  }
+
+  /**
+   * Prints Menu.
+   */
+  GameEvent printMenu(Scanner scan) {
+    System.out.println("Trying to print menu etc..");
+    String choice = scan.nextLine();
+
+    if (choice.equalsIgnoreCase("p")) {
+      return GameEvent.PLAY;
+    }
+
+    return GameEvent.NOTHING;
   }
 
   /**
