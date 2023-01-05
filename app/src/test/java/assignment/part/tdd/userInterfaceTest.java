@@ -10,10 +10,12 @@ import org.junit.jupiter.api.*;
 public class UserInterfaceTest {
   private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
   private final PrintStream originalOutputStream = System.out;
+  private UserInterface userInterface;
 
   @BeforeEach
-  void setUpOutputStream() {
+  void setUpOutputStreamAndUserInterface() {
     System.setOut(new PrintStream(outputStream));
+    this.userInterface = new UserInterface();
   }
 
   @AfterEach
@@ -23,7 +25,6 @@ public class UserInterfaceTest {
 
   @Test
   void uiShouldPrintWelcomeMessage() {
-    UserInterface userInterface = new UserInterface();
     userInterface.printWelcome();
 
     assertEquals("Welcome!", outputStream.toString().trim());
@@ -31,7 +32,6 @@ public class UserInterfaceTest {
 
   @Test
   void uiShouldPrintWinningMessage() {
-    UserInterface userInterface = new UserInterface();
     userInterface.printWinningMessage();
 
     assertEquals("You Won!", outputStream.toString().trim());
