@@ -23,8 +23,9 @@ public class userInterfaceTest {
 
   @Test
   void uiShouldPrintWelcomeMessage() {
+    UserInterface userInterface = new UserInterface();
     userInterface.printWelcome();
 
-    assertEquals("Welcome", outputStream.toString());
+    assertEquals("Welcome!", outputStream.toString().trim());
   }
 }
