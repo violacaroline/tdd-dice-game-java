@@ -17,4 +17,11 @@ public class UserInterface {
   void printWinningMessage() {
     System.out.println("You Won!");
   }
+
+  /**
+   * Prints You Lost message.
+   */
+  void printLosingMessage() {
+    System.out.println("You Lost..");
+  }
 }
