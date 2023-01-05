@@ -18,4 +18,12 @@ public class GameEventTest {
 
     assertEquals(GameEvent.QUIT, value);
   }
+
+
+  @Test
+  void gameEventEnumShouldHaveNothingValue() {
+    GameEvent value = GameEvent.findEnumValue("NOTHING");
+
+    assertEquals(GameEvent.NOTHING, value);
+  }
 }
