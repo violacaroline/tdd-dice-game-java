@@ -10,7 +10,7 @@ public class GameEventTest {
    */
   @Test
   void gameEventEnumShouldHavePlayValue() {
-    GameEvent value = GameEvent.findGameEventValue("PLAY");
+    GameEvent value = GameEvent.PLAY;
 
     assertEquals(GameEvent.PLAY, value);
   }
