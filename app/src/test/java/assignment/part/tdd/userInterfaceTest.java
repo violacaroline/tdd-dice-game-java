@@ -36,4 +36,11 @@ public class UserInterfaceTest {
 
     assertEquals("You Won!", outputStream.toString().trim());
   }
+
+  @Test
+  void uiShouldPrintYouLostMessage() {
+    userInterface.printLosingMessage();
+
+    assertEquals("You Lost..", outputStream.toString().trim());
+  }
 }
