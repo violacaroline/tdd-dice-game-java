@@ -7,7 +7,7 @@ import java.io.*;
 import org.junit.jupiter.api.*;
 
 
-public class userInterfaceTest {
+public class UserInterfaceTest {
   private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
   private final PrintStream originalOutputStream = System.out;
 
@@ -27,5 +27,13 @@ public class userInterfaceTest {
     userInterface.printWelcome();
 
     assertEquals("Welcome!", outputStream.toString().trim());
+  }
+
+  @Test
+  void uiShouldPrintWinningMessage() {
+    UserInterface userInterface = new UserInterface();
+    userInterface.printWinningMessage();
+
+    assertEquals("You Won!", outputStream.toString().trim());
   }
 }
