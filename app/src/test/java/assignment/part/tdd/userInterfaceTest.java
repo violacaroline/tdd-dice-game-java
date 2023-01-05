@@ -1,8 +1,9 @@
 package assignment.part.tdd;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.io.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 
 import org.junit.jupiter.api.*;
 
@@ -25,22 +26,30 @@ public class UserInterfaceTest {
 
   @Test
   void uiShouldPrintWelcomeMessage() {
-    userInterface.printWelcome();
+    this.userInterface.printWelcome();
 
     assertEquals("Welcome!", outputStream.toString().trim());
   }
 
   @Test
   void uiShouldPrintWinningMessage() {
-    userInterface.printWinningMessage();
+    this.userInterface.printWinningMessage();
 
     assertEquals("You Won!", outputStream.toString().trim());
   }
 
   @Test
   void uiShouldPrintYouLostMessage() {
-    userInterface.printLosingMessage();
+    this.userInterface.printLosingMessage();
 
     assertEquals("You Lost..", outputStream.toString().trim());
+  }
+
+  @Test 
+  void uiPrintMenuShouldReturnGameEventPlayForLetterP() {
+    Robot robot = new Robot();
+    
+    this.userInterface.printMenu();
+    robot.keyPress(KeyEvent.VK_P);
   }
 }
