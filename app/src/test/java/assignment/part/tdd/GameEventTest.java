@@ -12,4 +12,10 @@ public class GameEventTest {
     assertEquals(GameEvent.PLAY, value);
   }
 
+  @Test
+  void gameEventEnumShouldHaveQuitValue() {
+    GameEvent value = GameEvent.findEnumValue("QUIT");
+
+    assertEquals(GameEvent.QUIT, value);
+  }
 }
