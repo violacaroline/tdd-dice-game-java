@@ -1,26 +1,31 @@
 package assignment.part.tdd;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DieTest {
-  @Test
-  void dieShouldHaveValuePropertyInitializedToZero() {
-    Die die = new Die();
+  private Die die;
+  private int minValue;
+  private int maxValue;
 
-    assertEquals(0, die.getValue());
+  @BeforeEach
+  void setUpDie() {
+    this.die = new Die();
+    this.minValue = 1;
+    this.maxValue = 6;
+  }
+  
+  @Test
+  void dieShouldHaveValuePropertyInitializedToANumberBetween1And6() {
+    assertTrue(this.die.getValue() >= this.minValue && this.die.getValue() <= this.maxValue);
   }
 
   @Test
   void dieRollMethodShouldSetValuePropertyToAnIntBetween1And6() {
-    Die die = new Die();
-    int min = 1;
-    int max = 6;
+    int randomDieValue = this.die.roll();
 
-    int randomDieValue = die.roll();
-
-    assertTrue(randomDieValue >= min && randomDieValue <= max);
+    assertTrue(randomDieValue >= this.minValue && randomDieValue <= this.maxValue);
   }
 }
