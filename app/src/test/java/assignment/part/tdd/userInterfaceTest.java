@@ -58,4 +58,12 @@ public class UserInterfaceTest {
 
     assertEquals(GameEvent.QUIT, this.userInterface.printMenu(new Scanner(inputStream)));
   }
+
+  @Test
+  void uiPrintMenuShouldReturnGameEventNothingForAnyOtherLetterThanPorQ() {
+    String correctInput = "e";
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
+
+    assertEquals(GameEvent.NOTHING, this.userInterface.printMenu(new Scanner(inputStream)));
+  }
 }

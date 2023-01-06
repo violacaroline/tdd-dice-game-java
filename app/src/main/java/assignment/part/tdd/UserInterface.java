@@ -26,7 +26,7 @@ public class UserInterface {
       return GameEvent.QUIT;
     }
 
-    return GameEvent.NOTHING;
+    return GameEvent.PLAY;
   }
 
   /**
