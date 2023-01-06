@@ -50,4 +50,12 @@ public class UserInterfaceTest {
 
     assertEquals(GameEvent.PLAY, this.userInterface.printMenu(new Scanner(inputStream)));
   }
+
+  @Test
+  void uiPrintMenuShouldReturnGameEventQuitForLetterQ() {
+    String correctInput = "q";
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
+
+    assertEquals(GameEvent.QUIT, this.userInterface.printMenu(new Scanner(inputStream)));
+  }
 }
