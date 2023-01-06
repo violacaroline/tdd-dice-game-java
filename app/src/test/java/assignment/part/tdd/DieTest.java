@@ -8,6 +8,6 @@ public class DieTest {
   void dieShouldHaveValuePropertyInitializedToZero() {
     Die die = new Die();
 
-    assertEquals(0, die.value);
+    assertEquals(0, die.getValue());
   }
 }

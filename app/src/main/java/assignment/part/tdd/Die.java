@@ -1,5 +1,9 @@
 package assignment.part.tdd;
 
 public class Die {
-  public int value = 0;
+  private int value = 0;
+
+  public int getValue() {
+    return this.value;
+  }
 }
