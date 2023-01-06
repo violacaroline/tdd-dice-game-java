@@ -22,6 +22,8 @@ public class UserInterface {
 
     if (choice.equalsIgnoreCase("p")) {
       return GameEvent.PLAY;
+    } else if (choice.equalsIgnoreCase("q")) {
+      return GameEvent.QUIT;
     }
 
     return GameEvent.NOTHING;
