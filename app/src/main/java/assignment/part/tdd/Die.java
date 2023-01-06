@@ -6,14 +6,14 @@ public class Die {
   private int value = 1;
 
   public Die() {
-    this.value = roll();
+    this.value = rollDie();
   }
 
   public int getValue() {
     return this.value;
   }
 
-  public int roll() {
+  public int rollDie() {
     Random random = new Random();
     int min = 1;
     int max = 6;
