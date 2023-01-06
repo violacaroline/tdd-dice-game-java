@@ -6,7 +6,6 @@ import java.util.Scanner;
 import org.junit.jupiter.api.*;
 // import org.mockito.Mockito;
 
-
 public class UserInterfaceTest {
   private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
   private final PrintStream originalOutputStream = System.out;
@@ -44,16 +43,11 @@ public class UserInterfaceTest {
     assertEquals("You Lost..", outputStream.toString().trim());
   }
 
-  @Test 
+  @Test
   void uiPrintMenuShouldReturnGameEventPlayForLetterP() {
-    try {
-      String correctInput = "p";
-      ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
+    String correctInput = "p";
+    ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
 
-      assertEquals(GameEvent.PLAY, this.userInterface.printMenu(new Scanner(inputStream)));
-
-    } catch (IOError error) {
-      error.printStackTrace();
-    }
+    assertEquals(GameEvent.PLAY, this.userInterface.printMenu(new Scanner(inputStream)));
   }
 }
