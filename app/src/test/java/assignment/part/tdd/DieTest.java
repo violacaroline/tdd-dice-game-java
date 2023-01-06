@@ -1,14 +1,13 @@
 package assignment.part.tdd;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class DieTest {
   @Test
-  void dieShouldHaveValueProperty() {
+  void dieShouldHaveValuePropertyInitializedToZero() {
     Die die = new Die();
 
-    assertTrue(die.value);
+    assertEquals(0, die.value);
   }
 }
