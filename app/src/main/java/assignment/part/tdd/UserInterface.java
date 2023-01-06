@@ -17,7 +17,7 @@ public class UserInterface {
    * Prints Menu.
    */
   GameEvent printMenu(Scanner scan) {
-    System.out.println("Trying to print menu etc..");
+    System.out.println("==== MENU ====\nPress 'P' to play\nPress 'Q' to quit");
     String choice = scan.nextLine();
 
     if (choice.equalsIgnoreCase("p")) {
