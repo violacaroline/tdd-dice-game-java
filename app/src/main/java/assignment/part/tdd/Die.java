@@ -16,7 +16,7 @@ public class Die {
   public void rollDie() {
     Random random = new Random();
     int min = 1;
-    int max = 7;
+    int max = 7; // Exclusive
 
     this.value = random.nextInt(max - min) + min;
   }
