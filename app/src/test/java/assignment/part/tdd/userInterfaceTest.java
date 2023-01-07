@@ -10,12 +10,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class UserInterfaceTest {
   private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
   private final PrintStream originalOutputStream = System.out;
-  private UserInterface userInterface;
+  private UserInterface userInterfaceSUT;
 
   @BeforeEach
   void setUpOutputStreamAndUserInterface() {
     System.setOut(new PrintStream(outputStream));
-    this.userInterface = new UserInterface();
+    this.userInterfaceSUT = new UserInterface();
   }
 
   @AfterEach
@@ -25,21 +25,21 @@ public class UserInterfaceTest {
 
   @Test
   void uiShouldPrintWelcomeMessage() {
-    this.userInterface.printWelcome();
+    this.userInterfaceSUT.printWelcome();
 
     assertEquals("Welcome!", outputStream.toString().trim());
   }
 
   @Test
   void uiShouldPrintWinningMessage() {
-    this.userInterface.printWinningMessage();
+    this.userInterfaceSUT.printWinningMessage();
 
     assertEquals("You Won!", outputStream.toString().trim());
   }
 
   @Test
   void uiShouldPrintYouLostMessage() {
-    this.userInterface.printLosingMessage();
+    this.userInterfaceSUT.printLosingMessage();
 
     assertEquals("You Lost..", outputStream.toString().trim());
   }
@@ -49,7 +49,7 @@ public class UserInterfaceTest {
     String correctInput = "p";
     ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
 
-    assertEquals(GameEvent.PLAY, this.userInterface.printMenu(new Scanner(inputStream)));
+    assertEquals(GameEvent.PLAY, this.userInterfaceSUT.printMenu(new Scanner(inputStream)));
   }
 
   @Test
@@ -57,7 +57,7 @@ public class UserInterfaceTest {
     String correctInput = "q";
     ByteArrayInputStream inputStream = new ByteArrayInputStream(correctInput.getBytes());
 
-    assertEquals(GameEvent.QUIT, this.userInterface.printMenu(new Scanner(inputStream)));
+    assertEquals(GameEvent.QUIT, this.userInterfaceSUT.printMenu(new Scanner(inputStream)));
   }
 
   @ParameterizedTest
@@ -65,6 +65,6 @@ public class UserInterfaceTest {
   void uiPrintMenuShouldReturnGameEventNothingForAnyOtherLetterThanPorQ(String randomInput) {
     ByteArrayInputStream inputStream = new ByteArrayInputStream(randomInput.getBytes());
 
-    assertEquals(GameEvent.NOTHING, this.userInterface.printMenu(new Scanner(inputStream)));
+    assertEquals(GameEvent.NOTHING, this.userInterfaceSUT.printMenu(new Scanner(inputStream)));
   }
 }
