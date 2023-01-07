@@ -12,9 +12,9 @@ public class PlayerTest {
     UserInterface ui = mock(UserInterface.class);
     DiceGame diceGame = mock(DiceGame.class);
 
-    Player playerSUT = new Player(ui, diceGame);
+    Player playerSUT = new Player();
 
-    playerSUT.playGame();
+    playerSUT.playGame(ui, diceGame);
 
     verify(ui, times(1)).printWelcome();
   }
