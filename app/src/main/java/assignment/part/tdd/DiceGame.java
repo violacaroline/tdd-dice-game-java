@@ -13,6 +13,8 @@ public class DiceGame {
     this.dieOne.rollDie();
     this.dieTwo.rollDie();
 
-    return dieOne.getValue() + dieTwo.getValue() == 7;
+    boolean isSeven = dieOne.getValue() + dieTwo.getValue() == 7;
+
+    return isSeven;
   }
 }
