@@ -3,21 +3,21 @@ package assignment.part.tdd;
 import java.util.Random;
 
 public class Die {
-  private int value = 1;
+  private int value;
 
   public Die() {
-    this.value = rollDie();
+    rollDie();
   }
 
   public int getValue() {
     return this.value;
   }
 
-  public int rollDie() {
+  public void rollDie() {
     Random random = new Random();
     int min = 1;
-    int max = 6;
+    int max = 7;
 
-    return random.nextInt(min + max) + min;
+    this.value = random.nextInt(max - min) + min;
   }
 }

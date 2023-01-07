@@ -24,7 +24,7 @@ public class DieTest {
 
   @Test
   void dieRollMethodShouldSetValuePropertyToAnIntBetween1And6() {
-    int randomDieValue = this.die.rollDie();
+    int randomDieValue = this.die.getValue();
 
     assertTrue(randomDieValue >= this.minValue && randomDieValue <= this.maxValue);
   }
