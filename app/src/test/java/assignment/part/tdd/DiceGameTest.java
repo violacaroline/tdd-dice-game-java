@@ -12,12 +12,12 @@ public class DiceGameTest {
   void playGameMethodShouldReturnTrueForTotalValue7() {
     Die dieMockOne = mock(Die.class);
     Die dieMockTwo = mock(Die.class);
-    DiceGame diceGame = new DiceGame(dieMockOne, dieMockTwo);
+    DiceGame diceGameSUT = new DiceGame(dieMockOne, dieMockTwo);
 
     when(dieMockOne.getValue()).thenReturn(4);
     when(dieMockTwo.getValue()).thenReturn(3);
 
-    assertTrue(diceGame.playGame());
+    assertTrue(diceGameSUT.playGame());
   }
 
   @Test
