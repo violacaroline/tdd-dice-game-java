@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
   private Scanner scan;
+  private Player playerSUT;
   private UserInterface ui;
   private DiceGame diceGame;
 
@@ -21,33 +22,32 @@ public class PlayerTest {
     this.scan = new Scanner(System.in, "utf-8");
     this.ui = mock(UserInterface.class);
     this.diceGame = mock(DiceGame.class);
+    this.playerSUT = new Player(ui, scan, diceGame);
   }
 
   @Test
   void playGameMethodShouldCallUiWelcomeMethodOnce() {
-    Player playerSUT = new Player();
+    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
 
-    playerSUT.playGame(ui, scan, diceGame);
+    this.playerSUT.playGame();
 
     verify(ui, times(1)).printWelcome();
   }
 
   @Test
   void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce() {
-    Player playerSUT = new Player();
-    
-    playerSUT.playGame(ui, scan, diceGame);
+    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+  
+    this.playerSUT.playGame();
 
     verify(ui, atLeastOnce()).printMenu(scan);
   }
 
   @Test
   void playGameMethodShouldCallUiQuittingMethodWhenPrintMenuReturnsGameEventQuit() {
-    Player playerSUT = new Player();
-
     when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
 
-    playerSUT.playGame(ui, scan, diceGame);
+    this.playerSUT.playGame();
 
     verify(ui, times(1)).printQuittingMessage();
   }
