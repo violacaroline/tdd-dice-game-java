@@ -12,12 +12,13 @@ import org.junit.jupiter.api.Test;
 public class PlayerTest {
   @Test
   void playGameMethodShouldCallUiWelcomeMethodOnce() {
+    Scanner scan = new Scanner(System.in, "utf-8");
     UserInterface ui = mock(UserInterface.class);
     DiceGame diceGame = mock(DiceGame.class);
 
     Player playerSUT = new Player();
 
-    playerSUT.playGame(ui, diceGame);
+    playerSUT.playGame(ui, scan, diceGame);
 
     verify(ui, times(1)).printWelcome();
   }
@@ -30,7 +31,7 @@ public class PlayerTest {
     DiceGame diceGame = mock(DiceGame.class);
     Player playerSUT = new Player();
     
-    playerSUT.playGame(ui, diceGame);
+    playerSUT.playGame(ui, scan, diceGame);
 
     verify(ui, atLeastOnce()).printMenu(scan);
   }
