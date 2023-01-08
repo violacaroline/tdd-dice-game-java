@@ -4,6 +4,7 @@ import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Scanner;
 
@@ -32,12 +33,19 @@ public class PlayerTest {
   }
 
   @Test
-  void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce(){
+  void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce() {
     Player playerSUT = new Player();
     
     playerSUT.playGame(ui, scan, diceGame);
 
     verify(ui, atLeastOnce()).printMenu(scan);
+  }
+
+  @Test
+  void playGameMethodShouldCallUiQuittingMethodWhenPrintMenuReturnsGameEventQuit() {
+    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+
+    verify(ui, times(1)).printQuittingMessage();
   }
 
   // VERIFY THAT DICEGAME.PLAYGAME IS CALLED WHILE UI.PRINTMENU DOES NOT RETURN QUIT
