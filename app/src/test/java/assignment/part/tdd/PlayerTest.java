@@ -43,7 +43,11 @@ public class PlayerTest {
 
   @Test
   void playGameMethodShouldCallUiQuittingMethodWhenPrintMenuReturnsGameEventQuit() {
+    Player playerSUT = new Player();
+
     when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+
+    playerSUT.playGame(ui, scan, diceGame);
 
     verify(ui, times(1)).printQuittingMessage();
   }

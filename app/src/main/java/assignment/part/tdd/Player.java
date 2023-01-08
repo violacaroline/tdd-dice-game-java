@@ -10,5 +10,7 @@ public class Player {
     do {
       
     } while (ui.printMenu(scan) != GameEvent.QUIT);
+
+    ui.printQuittingMessage();
   }
 }
