@@ -31,7 +31,6 @@ public class PlayerTest {
     verify(ui, times(1)).printWelcome();
   }
 
-  // VERIFY THAT UI.PRINTMENU IS CALLED
   @Test
   void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce(){
     Player playerSUT = new Player();

@@ -67,4 +67,11 @@ public class UserInterfaceTest {
 
     assertEquals(GameEvent.NOTHING, this.userInterfaceSUT.printMenu(new Scanner(inputStream)));
   }
+
+  @Test
+  void uiShouldPrintQuitMessage() {
+    this.userInterfaceSUT.printQuittingMessage();
+
+    assertEquals("Quitting.. See you next time!", outputStream.toString().trim());
+  }
 }
