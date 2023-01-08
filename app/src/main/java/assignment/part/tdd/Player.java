@@ -6,6 +6,9 @@ public class Player {
 
   public void playGame(UserInterface ui, Scanner scan, DiceGame diceGame) {
     ui.printWelcome();
-    ui.printMenu(scan);
+
+    do {
+      
+    } while (ui.printMenu(scan) != GameEvent.QUIT);
   }
 }

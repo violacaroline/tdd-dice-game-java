@@ -7,15 +7,23 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Scanner;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
+  private Scanner scan;
+  private UserInterface ui;
+  private DiceGame diceGame;
+
+  @BeforeEach
+  void setUpMocksAndScanner() {
+    this.scan = new Scanner(System.in, "utf-8");
+    this.ui = mock(UserInterface.class);
+    this.diceGame = mock(DiceGame.class);
+  }
+
   @Test
   void playGameMethodShouldCallUiWelcomeMethodOnce() {
-    Scanner scan = new Scanner(System.in, "utf-8");
-    UserInterface ui = mock(UserInterface.class);
-    DiceGame diceGame = mock(DiceGame.class);
-
     Player playerSUT = new Player();
 
     playerSUT.playGame(ui, scan, diceGame);
@@ -26,9 +34,6 @@ public class PlayerTest {
   // VERIFY THAT UI.PRINTMENU IS CALLED
   @Test
   void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce(){
-    Scanner scan = new Scanner(System.in, "utf-8");
-    UserInterface ui = mock(UserInterface.class);
-    DiceGame diceGame = mock(DiceGame.class);
     Player playerSUT = new Player();
     
     playerSUT.playGame(ui, scan, diceGame);
