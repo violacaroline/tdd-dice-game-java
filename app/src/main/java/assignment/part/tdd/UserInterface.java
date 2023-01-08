@@ -42,4 +42,11 @@ public class UserInterface {
   void printLosingMessage() {
     System.out.println("You Lost..");
   }
+
+  /**
+   * Prints Quitting message.
+   */
+  void printQuittingMessage() {
+    System.out.println("Quitting.. See you next time!");
+  }
 }
