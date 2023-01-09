@@ -17,7 +17,9 @@ public class Player {
     ui.printWelcome();
 
     do {
-      this.diceGame.playGame();
+      if (this.diceGame.playGame()) {
+        
+      }      
     } while (ui.printMenu(scan) != GameEvent.QUIT);
 
     ui.printQuittingMessage();
