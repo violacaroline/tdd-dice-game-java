@@ -15,11 +15,10 @@ public class Player {
 
   public void playGame() {
     this.ui.printWelcome();
-    this.ui.printWinningMessage();
-
 
     do {
       if (this.diceGame.playGame()) {
+        this.ui.printWinningMessage();
       }      
     } while (this.ui.printMenu(scan) != GameEvent.QUIT);
 
