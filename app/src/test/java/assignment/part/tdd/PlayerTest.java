@@ -27,32 +27,42 @@ public class PlayerTest {
 
   @Test
   void playGameMethodShouldCallUiWelcomeMethodOnce() {
-    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
 
     this.playerSUT.playGame();
 
-    verify(ui, times(1)).printWelcome();
+    verify(this.ui, times(1)).printWelcome();
   }
 
   @Test
   void playGameMethodShouldCallUiPrintMenuMethodAtLeastOnce() {
-    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
   
     this.playerSUT.playGame();
 
-    verify(ui, atLeastOnce()).printMenu(scan);
+    verify(this.ui, atLeastOnce()).printMenu(scan);
   }
 
   @Test
   void playGameMethodShouldCallUiQuittingMethodWhenPrintMenuReturnsGameEventQuit() {
-    when(ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
 
     this.playerSUT.playGame();
 
-    verify(ui, times(1)).printQuittingMessage();
+    verify(this.ui, times(1)).printQuittingMessage();
   }
 
-  // VERIFY THAT DICEGAME.PLAYGAME IS CALLED WHILE UI.PRINTMENU DOES NOT RETURN QUIT
+  // VERIFY THAT DICEGAME.PLAYGAME IS CALLED WHILE UI.PRINTMENU RETURNS PLAY
+  @Test
+  void playGameMethodShouldCallDiceGamePlayGameWhenPrintMenuReturnsGameEventPlay() {
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.PLAY);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+
+
+    this.playerSUT.playGame();
+
+    verify(this.diceGame, atLeastOnce()).playGame();
+  }
 
   // IF DICEGAME.PLAYGAME RETURNS TRUE, CALL UI.PRINTWINNINGMSG
 
