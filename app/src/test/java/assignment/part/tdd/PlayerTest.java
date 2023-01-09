@@ -65,6 +65,17 @@ public class PlayerTest {
   }
 
   // IF DICEGAME.PLAYGAME RETURNS TRUE, CALL UI.PRINTWINNINGMSG
+  @Test
+  void playGameMethodShouldCallUiPrintWinningMessageWhenDiceGamePlayGameReturnsTrue() {
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.PLAY);
+    when(this.diceGame.playGame()).thenReturn(true);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+
+
+    this.playerSUT.playGame();
+
+    verify(this.ui, times(1)).printWinningMessage();
+  }
 
   //IF DICEGAME.PLAYGAME FALSE, CALL UI.PRINTLOSINGMSG
 }
