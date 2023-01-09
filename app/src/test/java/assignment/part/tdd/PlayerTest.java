@@ -71,11 +71,19 @@ public class PlayerTest {
     when(this.diceGame.playGame()).thenReturn(true);
     when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
 
-
     this.playerSUT.playGame();
 
     verify(this.ui, times(1)).printWinningMessage();
   }
 
-  //IF DICEGAME.PLAYGAME FALSE, CALL UI.PRINTLOSINGMSG
+  @Test
+  void playGameMethodShouldCallUiPrintLosingMessageWhenDiceGamePlayGameReturnsFalse() {
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.PLAY);
+    when(this.diceGame.playGame()).thenReturn(false);
+    when(this.ui.printMenu(scan)).thenReturn(GameEvent.QUIT);
+
+    this.playerSUT.playGame();
+
+    verify(this.ui, times(1)).printLosingMessage();
+  }
 }
