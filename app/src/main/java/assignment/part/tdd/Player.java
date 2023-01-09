@@ -15,6 +15,7 @@ public class Player {
 
   public void playGame() {
     this.ui.printWelcome();
+    this.ui.printLosingMessage();
 
     do {
       if (this.diceGame.playGame()) {
