@@ -14,14 +14,15 @@ public class Player {
   }
 
   public void playGame() {
-    ui.printWelcome();
+    this.ui.printWelcome();
+    this.ui.printWinningMessage();
+
 
     do {
       if (this.diceGame.playGame()) {
-        
       }      
-    } while (ui.printMenu(scan) != GameEvent.QUIT);
+    } while (this.ui.printMenu(scan) != GameEvent.QUIT);
 
-    ui.printQuittingMessage();
+    this.ui.printQuittingMessage();
   }
 }
