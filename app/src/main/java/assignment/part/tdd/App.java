@@ -4,5 +4,12 @@
 package assignment.part.tdd;
 
 public class App {
-
+  /**
+   * Application starting point.
+   *
+   * @param args command line arguments.
+   */
+  public static void main(String[] args) {
+    UserInterface ui = new UserInterface();
+  }
 }
