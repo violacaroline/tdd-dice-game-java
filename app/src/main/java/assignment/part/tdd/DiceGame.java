@@ -11,7 +11,10 @@ public class DiceGame {
 
   public boolean playGame() {
     this.dieOne.rollDie();
+    System.out.println("You rolled: " + dieOne.getValue());
+
     this.dieTwo.rollDie();
+    System.out.println("You rolled: " + dieTwo.getValue());
 
     boolean isSeven = dieOne.getValue() + dieTwo.getValue() == 7;
 
