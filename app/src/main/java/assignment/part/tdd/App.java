@@ -3,6 +3,8 @@
  */
 package assignment.part.tdd;
 
+import java.util.Scanner;
+
 public class App {
   /**
    * Application starting point.
@@ -11,5 +13,11 @@ public class App {
    */
   public static void main(String[] args) {
     UserInterface ui = new UserInterface();
+    Die dieOne = new Die();
+    Die dieTwo = new Die();
+    DiceGame diceGame = new DiceGame(dieOne, dieTwo);
+    Player player = new Player(ui, new Scanner(System.in), diceGame);
+
+    player.playGame();
   }
 }
