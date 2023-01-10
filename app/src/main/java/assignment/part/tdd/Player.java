@@ -6,6 +6,7 @@ public class Player {
   private UserInterface ui;
   private Scanner scan;
   private DiceGame diceGame;
+  private boolean running;
 
   public Player(UserInterface ui, Scanner scan, DiceGame diceGame) {
     this.ui = ui;
@@ -15,26 +16,34 @@ public class Player {
 
   public void playGame() {
     this.ui.printWelcome();
-    boolean running = true;
+    this.running = true;
 
     while (running) {
       GameEvent gameEvent = this.ui.printMenu(scan);
-      switch (gameEvent) {
-        case PLAY:
-          if (this.diceGame.playGame()) {
-            this.ui.printWinningMessage();
-          } else {
-            this.ui.printLosingMessage();
-          }
-          break;
-        case QUIT:
-          this.ui.printQuittingMessage();
-          running = false;
-          break;
+      performGameEvent(gameEvent);
+    }
+  }
 
-        default:
-          break;
-      }
+  // SKAPA METOD FÖR SWITCH!! KANSKE SPY, PROTECTED/ARV - LOOP CLASS - INNER CLASS
+  public void performGameEvent(GameEvent gameEvent) {
+    switch (gameEvent) {
+      case PLAY:
+        displayWinningOrLosingMessage(this.diceGame.playGame());
+        break;
+      case QUIT:
+        this.ui.printQuittingMessage();
+        this.running = false;
+        break;
+      default:
+        break;
+    }
+  }
+
+  public void displayWinningOrLosingMessage(boolean gameRound) {
+    if (gameRound) {
+      this.ui.printWinningMessage();
+    } else {
+      this.ui.printLosingMessage();
     }
   }
 }

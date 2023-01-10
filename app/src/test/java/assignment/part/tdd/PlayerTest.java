@@ -51,4 +51,28 @@ public class PlayerTest {
 
     verify(this.ui, times(1)).printQuittingMessage();
   }
+
+  @Test
+  void performGameEventShouldCallDiceGamePlayGameWhenGameEventReturnsPlay() {
+    GameEvent gameEvent = GameEvent.PLAY;
+
+    this.playerSUT.performGameEvent(gameEvent);
+
+    verify(this.diceGame, times(1)).playGame();
+  }
+
+
+  @Test
+  void displayWinningORLosingMessageShouldCallUiPrintWinningMessageWhenPlayGameReturnsTrue() {
+    this.playerSUT.displayWinningOrLosingMessage(true);
+
+    verify(this.ui, times(1)).printWinningMessage();
+  }
+
+  @Test
+  void displayWinningORLosingMessageShouldCallUiPrintWinningMessageWhenPlayGameReturnsFalse() {
+    this.playerSUT.displayWinningOrLosingMessage(false);
+
+    verify(this.ui, times(1)).printLosingMessage();
+  }
 }
